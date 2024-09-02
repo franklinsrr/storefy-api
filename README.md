@@ -5,6 +5,8 @@
 This project is the backend api for an e-commerce site with nextjs, it's using clean architecture and OOP, with typeorm and class-validator
 also it's using typeorm with mysql.
 
+![ci-test](https://github.com/franklinserif/storefy-api/actions/workflows/ci-test.yml/badge.svg)
+
 ## how it works
 
 ![Portfolio Screenshot](./assets/diagram.png)
