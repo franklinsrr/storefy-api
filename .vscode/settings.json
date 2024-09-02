@@ -1,1 +1,12 @@
+{
+    "conventionalCommits.scopes": [
+        "git",
+        "dependencies",
+        "package.json",
+        "prettier",
+        "vscode",
+        "eslint",
+        "tsconfig"
+    ],
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
