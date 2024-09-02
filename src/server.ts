@@ -3,7 +3,7 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import cors from 'cors'
 
-class ServerBootstrap {
+export class ServerBootstrap {
     public app: express.Application = express()
     private port: number = 8000
 
