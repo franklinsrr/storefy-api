@@ -6,7 +6,9 @@
         "prettier",
         "vscode",
         "eslint",
-        "tsconfig"
+        "tsconfig",
+        "assets/docs",
+        "ServerBootstrap"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
