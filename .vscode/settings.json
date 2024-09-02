@@ -9,7 +9,9 @@
         "tsconfig",
         "assets/docs",
         "ServerBootstrap",
-        "CI/CD"
+        "CI/CD",
+        "jest",
+        "test"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
