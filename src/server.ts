@@ -3,12 +3,15 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import cors from 'cors'
 import { UserRouter } from '@routers/user.router'
+import { ConfigServer } from '@config/config'
 
-export class ServerBootstrap {
+export class ServerBootstrap extends ConfigServer {
     public app: express.Application = express()
-    private readonly port: number = 8000
+    private readonly port: number = this.getNumberEnv('PORT') || 8000
 
     constructor() {
+        super()
+
         this.app.use(express.json())
         this.app.use(express.urlencoded({ extended: true }))
         this.app.use(morgan('dev'))
