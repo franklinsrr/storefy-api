@@ -1,18 +1,19 @@
 {
-  "conventionalCommits.scopes": [
-    "git",
-    "dependencies",
-    "package.json",
-    "prettier",
-    "vscode",
-    "eslint",
-    "tsconfig",
-    "assets/docs",
-    "ServerBootstrap",
-    "CI/CD",
-    "jest",
-    "test"
-  ],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.configPath": ".prettierrc.mjs"
+    "conventionalCommits.scopes": [
+        "git",
+        "dependencies",
+        "package.json",
+        "prettier",
+        "vscode",
+        "eslint",
+        "tsconfig",
+        "assets/docs",
+        "ServerBootstrap",
+        "CI/CD",
+        "jest",
+        "test"
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.configPath": ".prettierrc.mjs",
+    "editor.formatOnSave": true
 }
