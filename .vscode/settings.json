@@ -11,7 +11,10 @@
         "ServerBootstrap",
         "CI/CD",
         "jest",
-        "test"
+        "test",
+        "tsconfig.build.json",
+        "routes",
+        "config"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.configPath": ".prettierrc.mjs",
