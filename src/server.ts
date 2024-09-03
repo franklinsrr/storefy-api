@@ -2,6 +2,7 @@ import express from 'express'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import cors from 'cors'
+import { UserRouter } from '@routers/user.router'
 
 export class ServerBootstrap {
     public app: express.Application = express()
@@ -14,11 +15,13 @@ export class ServerBootstrap {
         this.app.use(cors())
         this.app.use(helmet())
 
-        this.app.get('/api/v1/hello', (_, res) => {
-            res.status(200).json({ message: 'hello!' })
-        })
+        this.app.use('/api/v1', this.routers())
 
         this.listen()
+    }
+
+    routers(): Array<express.Router> {
+        return [new UserRouter().router]
     }
 
     public listen(): void {
