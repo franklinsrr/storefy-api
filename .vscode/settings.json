@@ -15,7 +15,9 @@
         "tsconfig.build.json",
         "routes",
         "config",
-        "user.routes.ts"
+        "user.routes.ts",
+        "docker",
+        "User"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.configPath": ".prettierrc.mjs",
