@@ -24,7 +24,7 @@ describe('ConfigServer', () => {
         new TestConfigServer()
 
         expect(dotenv.config).toHaveBeenCalledWith({
-            path: '.env.development.local',
+            path: ['.env.development.local', '.env'],
         })
     })
 
