@@ -14,7 +14,8 @@
         "test",
         "tsconfig.build.json",
         "routes",
-        "config"
+        "config",
+        "user.routes.ts"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.configPath": ".prettierrc.mjs",
