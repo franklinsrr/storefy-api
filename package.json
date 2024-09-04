@@ -20,7 +20,7 @@
         "express": "^4.19.2",
         "helmet": "^7.1.0",
         "morgan": "^1.10.0",
-        "mysql": "^2.18.1",
+        "mysql2": "^3.11.0",
         "typeorm": "^0.3.20",
         "typeorm-naming-strategies": "^4.1.0",
         "typescript": "^5.5.4"
