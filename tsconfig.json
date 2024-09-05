@@ -35,8 +35,10 @@
             "@libs/*": ["libs/*"],
             "@constants/*": ["./constants/*"],
             "@interfaces/*": ["./interfaces/*"],
+            "@shared/*": ["./shared/*"],
             "@routers/*": ["./routers/*"],
             "@controllers/*": ["./controllers/*"],
+            "@user/*": ["./user/*"],
             "@config/*": ["./config/*"],
             "@test/*": ["../__test__/*"]
         }                                                    /* Specify a set of entries that re-map imports to additional lookup locations. */,
