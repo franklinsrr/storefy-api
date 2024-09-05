@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import { DataSource } from 'typeorm'
-import { UserEntity } from '../../../src/entities/user.entity'
+import { UserEntity } from '../../../src/user/entities/user.entity'
 import { USER_TYPES } from '../../../src/constants/user'
 import { ConfigTestServer } from '../config/configTest'
 
