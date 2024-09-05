@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { Request, Response } from 'express'
-import { UserRouter } from '../../../routers/user.router'
-import { UserController } from '../../../controllers/user.controller'
+import { UserRouter } from '../../../src/routers/user.router'
+import { UserController } from '../../../src/controllers/user.controller'
 
 vi.mock('../src/controllers/user.controller')
 
