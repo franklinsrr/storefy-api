@@ -1,5 +1,5 @@
 import { Column, Entity } from 'typeorm'
-import { BaseEntity } from '@config/base.entity'
+import { BaseEntity } from '@shared/entities/base.entity'
 import { UserRoleType } from '@interfaces/user'
 import { USER_TYPES } from '@constants/user'
 
