@@ -2,7 +2,7 @@ import express from 'express'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import cors from 'cors'
-import { UserRouter } from '@routers/user.router'
+import { UserRouter } from '@user/routers/user.router'
 import { ConfigServer } from '@config/config'
 import { DataSource } from 'typeorm'
 
