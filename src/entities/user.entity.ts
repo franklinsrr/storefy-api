@@ -1,26 +1,34 @@
 import { Column, Entity } from 'typeorm'
 import { BaseEntity } from '@config/base.entity'
 import { UserRoleType } from '@interfaces/user'
-import { USER_TYPES } from 'cosntants/user'
+import { USER_TYPES } from '@constants/user'
 
 @Entity({ name: 'user' })
 export class UserEntity extends BaseEntity {
-    @Column({ length: 90 })
+    @Column({
+        type: 'varchar',
+        length: 90,
+    })
     username!: string
 
     @Column({
+        type: 'varchar',
         name: 'first_name',
         length: 50,
     })
     firstName!: string
 
     @Column({
+        type: 'varchar',
         name: 'last_name',
         length: 50,
     })
     lastName!: string
 
-    @Column({ nullable: true })
+    @Column({
+        type: 'varchar',
+        nullable: true,
+    })
     password!: string
 
     @Column({
@@ -32,9 +40,15 @@ export class UserEntity extends BaseEntity {
     })
     userType!: UserRoleType
 
-    @Column({ nullable: true })
+    @Column({
+        type: 'varchar',
+        nullable: true,
+    })
     phone!: string
 
-    @Column()
+    @Column({
+        type: 'varchar',
+        nullable: false,
+    })
     email!: string
 }
