@@ -7,7 +7,10 @@ export default defineConfig({
         alias: {
             '@controllers': path.resolve(__dirname, 'src/controllers'),
             '@routers': path.resolve(__dirname, 'src/routers'),
-            // Añade más alias según los necesites
+            '@config': path.resolve(__dirname, 'src/config'),
+            '@entities': path.resolve(__dirname, 'src/entities'),
+            '@constants': path.resolve(__dirname, 'src/constants'),
+            '@interfaces': path.resolve(__dirname, 'src/interfaces'),
         },
     },
     test: {
