@@ -21,7 +21,10 @@
         "docker-compose",
         "vitest.config.ts",
         "constants",
-        "user.entity"
+        "user.entity",
+        "base.entity",
+        "user.controller",
+        "user.routes"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.configPath": ".prettierrc.mjs",
