@@ -12,48 +12,40 @@ jobs:
 
     services:
       mysql:
-        image: mysql:8.0
+        image: mysql:8.0  # Change to 'mysql:5.7' if needed
         ports:
           - 3313:3306
-        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=10
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=10 --memory=2g --cpus=2
         env:
           MYSQL_DATABASE: 'storefy_db_test'
           MYSQL_ROOT_PASSWORD: '1234'
           MYSQL_USER: 'franklinserif'
           MYSQL_PASSWORD: '1234'
-        options: > 
-          --default-authentication-plugin=mysql_native_password
-          --character-set-server=utf8mb4
-          --collation-server=utf8mb4_unicode_ci
-          --innodb-buffer-pool-size=512M
-          --max-connections=500
+        # Optional if you need to seed your database with initial data
         volumes:
           - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+          - /usr/share/zoneinfo:/usr/share/zoneinfo:ro  # Handle timezone files
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y tzdata
-      
-      - name: Setup timezone
-        run: |
-          sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
-          sudo dpkg-reconfigure -f noninteractive tzdata      
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
+      - name: Print MySQL logs
+        run: docker logs $(docker ps -q --filter ancestor=mysql:8.0)  # Adjust version if necessary
+
       - name: Wait for MySQL to be ready
         run: |
-          for i in {1..60}; do  # Increase retries to 60
+          for i in {1..120}; do  # Increase retries to 120
             if mysqladmin ping -h 127.0.0.1 --silent; then
               break
             fi
             echo 'Waiting for MySQL...'
-            sleep 2  # Increase sleep time to 2 seconds
+            sleep 5  # Increase sleep time to 5 seconds
           done
 
       - name: Install dependencies
