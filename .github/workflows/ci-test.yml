@@ -36,12 +36,12 @@ jobs:
 
       - name: Wait for MySQL to be ready
         run: |
-          for i in {1..30}; do
+          for i in {1..60}; do  # Increase retries to 60
             if mysqladmin ping -h 127.0.0.1 --silent; then
               break
             fi
             echo 'Waiting for MySQL...'
-            sleep 1
+            sleep 2  # Increase sleep time to 2 seconds
           done
 
       - name: Install dependencies
