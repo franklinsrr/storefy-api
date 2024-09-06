@@ -10,6 +10,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3313:3306
+        options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=3
+        env:
+          MYSQL_DATABASE: storefy_db_test
+          MYSQL_ROOT_PASSWORD: 1234
+          MYSQL_USER: franklinserif
+          MYSQL_PASSWORD: 1234
+        # Optional if you need to seed your database with initial data
+        volumes:
+          - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -17,7 +32,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Use the Node.js version your project requires
+          node-version: '18'
+
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 --silent; then
+              break
+            fi
+            echo 'Waiting for MySQL...'
+            sleep 1
+          done
 
       - name: Install dependencies
         run: npm install
@@ -26,6 +51,7 @@ jobs:
         run: npm run test
         env:
           CI: true  # Forcing CI mode for Jest
+          MYSQL_HOST: 127.0.0.1  # Set this in your test config
 
       - name: Create Pull Request
         if: success()
@@ -36,5 +62,5 @@ jobs:
           title: "Merge dev into main"
           body: "Automated PR to merge changes from dev into main."
           labels: "auto-generated"
-          assignees: "franklinsrr"  # Add your reviewer username here
-          reviewers: "franklinsrr"  # Add the reviewer's username
+          assignees: "franklinsrr"
+          reviewers: "franklinsrr"
