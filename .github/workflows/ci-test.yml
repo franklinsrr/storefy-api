@@ -21,13 +21,25 @@ jobs:
           MYSQL_ROOT_PASSWORD: '1234'
           MYSQL_USER: 'franklinserif'
           MYSQL_PASSWORD: '1234'
-        # Optional if you need to seed your database with initial data
+        options: > 
+          --default-authentication-plugin=mysql_native_password
+          --character-set-server=utf8mb4
+          --collation-server=utf8mb4_unicode_ci
+          --innodb-buffer-pool-size=512M
+          --max-connections=500
         volumes:
           - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y tzdata
+      
+      - name: Setup timezone
+        run: |
+          sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+          sudo dpkg-reconfigure -f noninteractive tzdata      
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
