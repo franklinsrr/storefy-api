@@ -21,9 +21,6 @@ jobs:
           MYSQL_ROOT_PASSWORD: '1234'
           MYSQL_USER: 'franklinserif'
           MYSQL_PASSWORD: '1234'
-        volumes:
-          - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro  # Ensure correct permissions
-          - /usr/share/zoneinfo:/usr/share/zoneinfo:ro  # Handle timezone files
 
     steps:
       - name: Checkout code
@@ -34,24 +31,23 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Print MySQL logs
-        run: docker logs $(docker ps -q --filter ancestor=mysql:8.0)  # Adjust version if necessary
-
       - name: Wait for MySQL to be ready
         run: |
-          for i in {1..120}; do  # Increase retries to 120
+          for i in {1..60}; do
             if mysqladmin ping -h 127.0.0.1 --silent; then
+              echo "MySQL is ready"
               break
             fi
             echo 'Waiting for MySQL...'
-            sleep 5  # Increase sleep time to 5 seconds
+            sleep 5
           done
 
-      - name: Initialize MySQL Database  # Optional if init.sql fails
+      - name: Create Database and User
         run: |
-          docker exec $(docker ps -q --filter ancestor=mysql:8.0) mysql -u root -p1234 -e "CREATE DATABASE IF NOT EXISTS storefy_db_test;"
-          docker exec $(docker ps -q --filter ancestor=mysql:8.0) mysql -u root -p1234 -e "CREATE USER 'franklinserif'@'%' IDENTIFIED BY '1234';"
-          docker exec $(docker ps -q --filter ancestor=mysql:8.0) mysql -u root -p1234 -e "GRANT ALL PRIVILEGES ON storefy_db_test.* TO 'franklinserif'@'%';"
+          mysql -h 127.0.0.1 -P 3313 -u root -p1234 -e "CREATE DATABASE IF NOT EXISTS storefy_db_test;"
+          mysql -h 127.0.0.1 -P 3313 -u root -p1234 -e "CREATE USER IF NOT EXISTS 'franklinserif'@'%' IDENTIFIED BY '1234';"
+          mysql -h 127.0.0.1 -P 3313 -u root -p1234 -e "GRANT ALL PRIVILEGES ON storefy_db_test.* TO 'franklinserif'@'%';"
+          mysql -h 127.0.0.1 -P 3313 -u root -p1234 -e "FLUSH PRIVILEGES;"
 
       - name: Install dependencies
         run: npm install
@@ -59,7 +55,7 @@ jobs:
       - name: Run tests
         run: npm run test
         env:
-          CI: true  # Forcing CI mode for Jest
+          CI: true
           MYSQL_HOST: 127.0.0.1  # Set this in your test config
 
       - name: Create Pull Request
