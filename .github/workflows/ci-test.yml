@@ -12,7 +12,7 @@ jobs:
 
     services:
       mysql:
-        image: mysql:8.0  # Change to 'mysql:5.7' if needed
+        image: mysql:8.0  # Consider changing to mysql:5.7 if needed
         ports:
           - 3313:3306
         options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=10 --memory=2g --cpus=2
@@ -21,9 +21,8 @@ jobs:
           MYSQL_ROOT_PASSWORD: '1234'
           MYSQL_USER: 'franklinserif'
           MYSQL_PASSWORD: '1234'
-        # Optional if you need to seed your database with initial data
         volumes:
-          - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+          - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro  # Ensure correct permissions
           - /usr/share/zoneinfo:/usr/share/zoneinfo:ro  # Handle timezone files
 
     steps:
@@ -47,6 +46,12 @@ jobs:
             echo 'Waiting for MySQL...'
             sleep 5  # Increase sleep time to 5 seconds
           done
+
+      - name: Initialize MySQL Database  # Optional if init.sql fails
+        run: |
+          docker exec $(docker ps -q --filter ancestor=mysql:8.0) mysql -u root -p1234 -e "CREATE DATABASE IF NOT EXISTS storefy_db_test;"
+          docker exec $(docker ps -q --filter ancestor=mysql:8.0) mysql -u root -p1234 -e "CREATE USER 'franklinserif'@'%' IDENTIFIED BY '1234';"
+          docker exec $(docker ps -q --filter ancestor=mysql:8.0) mysql -u root -p1234 -e "GRANT ALL PRIVILEGES ON storefy_db_test.* TO 'franklinserif'@'%';"
 
       - name: Install dependencies
         run: npm install
