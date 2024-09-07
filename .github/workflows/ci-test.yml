@@ -34,7 +34,7 @@ jobs:
       - name: Wait for MySQL to be ready
         run: |
           for i in {1..60}; do
-            if mysqladmin ping -h 127.0.0.1 --silent; then
+            if mysqladmin ping -h 127.0.0.1 -P 3313 --silent; then
               echo "MySQL is ready"
               break
             fi
