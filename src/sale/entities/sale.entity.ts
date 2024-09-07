@@ -2,7 +2,7 @@ import { Column, Entity } from 'typeorm'
 import { BaseEntity } from '@shared/entities/base.entity'
 
 @Entity('sale')
-export class Sale extends BaseEntity {
+export class SaleEntity extends BaseEntity {
     @Column({
         type: 'int',
         nullable: false,

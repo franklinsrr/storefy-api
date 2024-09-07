@@ -2,7 +2,7 @@ import { Column, Entity } from 'typeorm'
 import { BaseEntity } from '@shared/entities/base.entity'
 
 @Entity('product_variant')
-export class ProductVariant extends BaseEntity {
+export class ProductVariantEntity extends BaseEntity {
     @Column({
         type: 'varchar',
         nullable: false,
