@@ -26,7 +26,16 @@
         "user.controller",
         "user.routes",
         "entities",
-        "ref"
+        "ref",
+        "customer.entity.ts",
+        "cart.entity.ts",
+        "cartItem.entity.ts",
+        "image.entity.ts",
+        "product.entity.ts",
+        "productVariant.entity.ts",
+        "sale.entity.ts",
+        "user",
+        "vscode/settings.json"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.configPath": ".prettierrc.mjs",
