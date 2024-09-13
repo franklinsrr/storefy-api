@@ -9,7 +9,7 @@ export class ConfigTestServer extends ConfigServer {
             host: '127.0.0.1',
             port: 3313,
             username: 'franklinserif',
-            password: '1234',
+            password: '1234567',
             database: 'storefy_db_test',
             entities: [__dirname + '/../**/*.entity{.ts,.js}'],
             migrations: [__dirname + '/../migrations/*{.ts,.js}'],
