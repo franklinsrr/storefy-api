@@ -18,11 +18,12 @@ import { ConfigTestServer } from '../config/configTest'
 
 let testDataSource: DataSource
 
-const config = new ConfigTestServer()
+const config = new ConfigTestServer().typeORMConfig
 
 beforeAll(async () => {
     testDataSource = new DataSource({
-        ...config.typeORMConfig,
+        ...config,
+        synchronize: true,
         entities: [
             CostumerEntity,
             ProductEntity,
