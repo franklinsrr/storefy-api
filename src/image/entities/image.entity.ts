@@ -1,7 +1,7 @@
 import { BaseEntity } from '@shared/entities/base.entity'
 import { Column, Entity } from 'typeorm'
 
-@Entity('image')
+@Entity('images')
 export class ImageEntity extends BaseEntity {
     @Column({
         type: 'varchar',

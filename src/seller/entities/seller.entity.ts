@@ -1,7 +1,7 @@
 import { Entity, Column } from 'typeorm'
 import { BaseEntity } from '@shared/entities/base.entity'
 
-@Entity('seller')
+@Entity('sellers')
 export class SellerEntity extends BaseEntity {
     @Column({
         nullable: false,

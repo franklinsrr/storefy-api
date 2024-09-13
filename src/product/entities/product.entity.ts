@@ -1,7 +1,7 @@
 import { Column, Entity } from 'typeorm'
 import { BaseEntity } from '@shared/entities/base.entity'
 
-@Entity('product')
+@Entity('products')
 export class ProductEntity extends BaseEntity {
     @Column({
         type: 'varchar',

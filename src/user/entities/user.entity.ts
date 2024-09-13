@@ -3,7 +3,7 @@ import { BaseEntity } from '@shared/entities/base.entity'
 import { UserRoleType } from '@shared/interfaces/user'
 import { USER_TYPES } from '@shared/constants/user'
 
-@Entity({ name: 'user' })
+@Entity('users')
 export class UserEntity extends BaseEntity {
     @Column({
         type: 'varchar',
