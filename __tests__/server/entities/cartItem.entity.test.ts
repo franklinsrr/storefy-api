@@ -24,15 +24,15 @@ beforeAll(async () => {
     testDataSource = new DataSource({
         ...config.typeORMConfig,
         entities: [
-            CartItemEntity,
-            CartEntity,
             CostumerEntity,
-            UserEntity,
             ProductEntity,
             SellerEntity,
             CategoryEntity,
             ProductVariantEntity,
             ImageEntity,
+            UserEntity,
+            CartItemEntity,
+            CartEntity,
             SaleEntity,
         ],
     })

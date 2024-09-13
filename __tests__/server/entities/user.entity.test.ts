@@ -30,10 +30,10 @@ beforeAll(async () => {
             CategoryEntity,
             ProductVariantEntity,
             ImageEntity,
-            UserEntity,
             CartItemEntity,
             CartEntity,
             SaleEntity,
+            UserEntity,
         ],
     })
 
