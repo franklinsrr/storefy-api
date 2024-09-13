@@ -33,11 +33,7 @@
         "paths": {
             "@src/*": ["src/*"],
             "@libs/*": ["./shared/libs/*"],
-            "@constants/*": ["./shared/constants/*"],
-            "@interfaces/*": ["./shared/interfaces/*"],
             "@shared/*": ["./shared/*"],
-            "@routers/*": ["./routers/*"],
-            "@controllers/*": ["./controllers/*"],
             "@user/*": ["./user/*"],
             "@seller/*": ["./seller/*"],
             "@costumer/*": ["./costumer/*"],
