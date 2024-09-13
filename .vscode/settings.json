@@ -25,7 +25,8 @@
         "base.entity",
         "user.controller",
         "user.routes",
-        "entities"
+        "entities",
+        "ref"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.configPath": ".prettierrc.mjs",
