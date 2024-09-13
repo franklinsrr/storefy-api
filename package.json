@@ -5,6 +5,7 @@
     "description": "An E-commerce api with nodejs, typescript, typeorm and mysql",
     "main": "index.js",
     "scripts": {
+        "build": "export NODE_ENV=production && tsc && tsc-alias",
         "start": "export NODE_ENV=production && tsc && tsc-alias && node dist/server.js",
         "start:dev": "export NODE_ENV=development && concurrently \"tsc -w \" \"tsc-alias -w\"  \" nodemon dist/server.js \"",
         "test": "vitest",
