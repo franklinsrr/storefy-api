@@ -18,9 +18,9 @@ jobs:
         options: --health-cmd="mysqladmin ping --silent" --health-interval=10s --health-timeout=5s --health-retries=10 --memory=2g --cpus=2
         env:
           MYSQL_DATABASE: 'storefy_db_test'
-          MYSQL_ROOT_PASSWORD: '1234'
+          MYSQL_ROOT_PASSWORD: '1234567'
           MYSQL_USER: 'franklinserif'
-          MYSQL_PASSWORD: '1234'
+          MYSQL_PASSWORD: '12345678'
 
     steps:
       - name: Checkout code
