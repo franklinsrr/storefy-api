@@ -1,6 +1,8 @@
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm'
 import { BaseEntity } from '@shared/entities/base.entity'
 import { UserRoleType } from '@shared/interfaces/user'
+import { SellerEntity } from '@seller/entities/seller.entity'
+import { CostumerEntity } from '@costumer/entities/costumer.entity'
 import { USER_TYPES } from '@shared/constants/user'
 
 @Entity('users')
@@ -51,4 +53,12 @@ export class UserEntity extends BaseEntity {
         nullable: false,
     })
     email!: string
+
+    @OneToOne(() => SellerEntity, { nullable: true })
+    @JoinColumn()
+    seller!: SellerEntity
+
+    @OneToOne(() => CostumerEntity, { nullable: true })
+    @JoinColumn()
+    costumer!: CostumerEntity
 }
