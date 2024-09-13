@@ -1,5 +1,6 @@
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, ManyToOne, OneToMany } from 'typeorm'
 import { BaseEntity } from '@shared/entities/base.entity'
+import { ProductEntity } from '@product/entities/product.entity'
 
 @Entity('product_variants')
 export class ProductVariantEntity extends BaseEntity {
@@ -20,4 +21,7 @@ export class ProductVariantEntity extends BaseEntity {
         nullable: false,
     })
     stock!: number
+
+    @ManyToOne(() => ProductEntity, (product) => product.productVariants)
+    product!: ProductEntity
 }
