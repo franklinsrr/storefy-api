@@ -1,6 +1,17 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import { DataSource } from 'typeorm'
-import { CustomerEntity } from '../../../src/customer/entities/customer.entity'
+import {
+    CostumerEntity,
+    ProductEntity,
+    SellerEntity,
+    CategoryEntity,
+    ProductVariantEntity,
+    ImageEntity,
+    UserEntity,
+    CartItemEntity,
+    CartEntity,
+    SaleEntity,
+} from './imports'
 import { ConfigTestServer } from '../config/configTest'
 
 let testDataSource: DataSource
@@ -12,7 +23,18 @@ const config = new ConfigTestServer()
 beforeAll(async () => {
     testDataSource = new DataSource({
         ...config.typeORMConfig,
-        entities: [CustomerEntity],
+        entities: [
+            CostumerEntity,
+            ProductEntity,
+            SellerEntity,
+            CategoryEntity,
+            ProductVariantEntity,
+            ImageEntity,
+            UserEntity,
+            CartItemEntity,
+            CartEntity,
+            SaleEntity,
+        ],
     })
 
     await testDataSource.initialize()
@@ -22,25 +44,25 @@ afterAll(async () => {
     await testDataSource.destroy()
 })
 
-describe('CustomerEntity', () => {
-    it('should create a CustomerEntity instance and assign properties correctly', async () => {
-        const customerRepository = testDataSource.getRepository(CustomerEntity)
+describe('CostumerEntity', () => {
+    it('should create a CostumerEntity instance and assign properties correctly', async () => {
+        const costumerRepository = testDataSource.getRepository(CostumerEntity)
 
-        const customer = new CustomerEntity()
-        customer.address = address
+        const costumer = new CostumerEntity()
+        costumer.address = address
 
-        const savedCustomer = await customerRepository.save(customer)
+        const savedCostumer = await costumerRepository.save(costumer)
 
-        expect(savedCustomer.address).toBe(address)
+        expect(savedCostumer.address).toBe(address)
     })
 
-    it('should create a CustomerEntity without address instance and assign properties correctly', async () => {
-        const customerRepository = testDataSource.getRepository(CustomerEntity)
+    it('should create a CostumerEntity without address instance and assign properties correctly', async () => {
+        const costumerRepository = testDataSource.getRepository(CostumerEntity)
 
-        const customer = new CustomerEntity()
+        const costumer = new CostumerEntity()
 
-        const savedCustomer = await customerRepository.save(customer)
+        const savedCostumer = await costumerRepository.save(costumer)
 
-        expect(savedCustomer.address).toBeNull()
+        expect(savedCostumer.address).toBeNull()
     })
 })

@@ -1,6 +1,17 @@
 import { describe, it, expect, beforeAll, afterAll, expectTypeOf } from 'vitest'
 import { DataSource } from 'typeorm'
-import { CartItemEntity } from '../../../src/cartItem/entities/cartItem.entity'
+import {
+    CostumerEntity,
+    ProductEntity,
+    SellerEntity,
+    CategoryEntity,
+    ProductVariantEntity,
+    ImageEntity,
+    UserEntity,
+    CartItemEntity,
+    CartEntity,
+    SaleEntity,
+} from './imports'
 import { ConfigTestServer } from '../config/configTest'
 
 let testDataSource: DataSource
@@ -12,7 +23,18 @@ const config = new ConfigTestServer()
 beforeAll(async () => {
     testDataSource = new DataSource({
         ...config.typeORMConfig,
-        entities: [CartItemEntity],
+        entities: [
+            CartItemEntity,
+            CartEntity,
+            CostumerEntity,
+            UserEntity,
+            ProductEntity,
+            SellerEntity,
+            CategoryEntity,
+            ProductVariantEntity,
+            ImageEntity,
+            SaleEntity,
+        ],
     })
 
     await testDataSource.initialize()

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import * as dotenv from 'dotenv'
-import { ConfigServer } from '../../../src/config/config' // Asegúrate de que esta ruta es correcta
+import { ConfigServer } from '../../../src/config/config'
 
 // Mock dotenv.config
 vi.mock('dotenv', () => ({
