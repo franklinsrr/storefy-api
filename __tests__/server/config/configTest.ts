@@ -13,7 +13,7 @@ export class ConfigTestServer extends ConfigServer {
             database: 'storefy_db_test',
             entities: [__dirname + '/../**/*.entity{.ts,.js}'],
             migrations: [__dirname + '/../migrations/*{.ts,.js}'],
-            synchronize: true,
+            synchronize: false,
             logging: false,
             namingStrategy: new SnakeNamingStrategy(),
         }
