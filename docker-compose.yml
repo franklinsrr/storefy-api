@@ -1,7 +1,7 @@
 # prettier-ignore
 services:
   storefy_db:
-    image: mysql:8.0
+    image: mysql:9.0.1
     ports:
       - "3312:3306"
     environment:
@@ -10,20 +10,22 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - db_data:/var/lib/mysql  # Volumen separado para storefy_db
+      - db_data:/var/lib/mysql
   storefy_db_test:
-    image: mysql:8.0
+    image: mysql:9.0.1
     volumes:
-      - db_data_test:/var/lib/mysql  # Volumen separado para storefy_db_test
+      - db_data_test:/var/lib/mysql
     ports:
       - "3313:3306"
     environment:
-      MYSQL_DATABASE: ${MYSQL_TEST_DATABASE}
-      MYSQL_ROOT_USER: ${MYSQL_ROOT_USER}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: storefy_db_test
+      MYSQL_ROOT_USER:  root
+      MYSQL_ROOT_PASSWORD: 1234567
+      MYSQL_USER: franklinserif
+      MYSQL_PASSWORD: 12345678
+      PGDATA: /var/lib/postgresql/data/pgdata
 volumes:
   db_data:  # Declaración del volumen para storefy_db
   db_data_test:  # Declaración del volumen para storefy_db_test
