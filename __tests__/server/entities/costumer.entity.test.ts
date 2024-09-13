@@ -18,13 +18,13 @@ let testDataSource: DataSource
 
 const address = '177A Bleecker Street, Greenwich Village, Nueva York'
 
-const config = new ConfigTestServer()
+const config = new ConfigTestServer().typeORMConfig
 
 beforeAll(async () => {
     testDataSource = new DataSource({
-        ...config.typeORMConfig,
+        ...config,
+        synchronize: true,
         entities: [
-            CostumerEntity,
             ProductEntity,
             SellerEntity,
             CategoryEntity,
@@ -34,6 +34,7 @@ beforeAll(async () => {
             CartItemEntity,
             CartEntity,
             SaleEntity,
+            CostumerEntity,
         ],
     })
 
