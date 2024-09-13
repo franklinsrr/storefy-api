@@ -11,9 +11,9 @@ export class ConfigTestServer extends ConfigServer {
             username: 'franklinserif',
             password: '12345678',
             database: 'storefy_db_test',
-            entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-            migrations: [__dirname + '/../migrations/*{.ts,.js}'],
-            synchronize: false,
+            entities: [__dirname + '../../../src/**/*.entity{.ts,.js}'],
+            migrations: [__dirname + '../../../src/migrations/*{.ts,.js}'],
+            synchronize: true,
             logging: false,
             namingStrategy: new SnakeNamingStrategy(),
         }
