@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany } from 'typeorm'
+import { Column, Entity, ManyToOne } from 'typeorm'
 import { BaseEntity } from '@shared/entities/base.entity'
 import { ProductEntity } from '@product/entities/product.entity'
 
