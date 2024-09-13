@@ -1,7 +1,7 @@
 import { Column, Entity } from 'typeorm'
 import { BaseEntity } from '@shared/entities/base.entity'
-import { UserRoleType } from '@interfaces/user'
-import { USER_TYPES } from '@constants/user'
+import { UserRoleType } from '@shared/interfaces/user'
+import { USER_TYPES } from '@shared/constants/user'
 
 @Entity({ name: 'user' })
 export class UserEntity extends BaseEntity {

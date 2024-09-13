@@ -32,9 +32,9 @@
         "baseUrl": "./src"                                   /* Specify the base directory to resolve non-relative module names. */,
         "paths": {
             "@src/*": ["src/*"],
-            "@libs/*": ["libs/*"],
-            "@constants/*": ["./constants/*"],
-            "@interfaces/*": ["./interfaces/*"],
+            "@libs/*": ["./shared/libs/*"],
+            "@constants/*": ["./shared/constants/*"],
+            "@interfaces/*": ["./shared/interfaces/*"],
             "@shared/*": ["./shared/*"],
             "@routers/*": ["./routers/*"],
             "@controllers/*": ["./controllers/*"],
