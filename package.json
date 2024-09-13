@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
         "start": "export NODE_ENV=production && tsc && tsc-alias && node dist/server.js",
-        "dev": "export NODE_ENV=development && concurrently \"tsc -w \" \"tsc-alias -w\"  \" nodemon dist/server.js \"",
+        "start:dev": "export NODE_ENV=development && concurrently \"tsc -w \" \"tsc-alias -w\"  \" nodemon dist/server.js \"",
         "test": "vitest",
         "test:coverage": "vitest run --coverage",
         "prettier": "exec prettier ./src/*** --write"
