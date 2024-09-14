@@ -37,8 +37,8 @@ beforeAll(async () => {
     await testDataSource.initialize()
 })
 
-/* afterAll(async () => {
+afterAll(async () => {
     if (testDataSource.isInitialized) {
         await testDataSource.destroy()
     }
-}) */
+})
