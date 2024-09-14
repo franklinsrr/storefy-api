@@ -24,6 +24,7 @@ beforeAll(async () => {
     testDataSource = new DataSource({
         ...config,
         synchronize: true,
+        dropSchema: true,
         entities: [
             CostumerEntity,
             ProductEntity,
@@ -42,7 +43,9 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-    await testDataSource.destroy()
+    if (testDataSource.isInitialized) {
+        await testDataSource.destroy()
+    }
 })
 
 describe('UserEntity', () => {

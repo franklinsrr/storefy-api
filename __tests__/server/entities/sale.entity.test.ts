@@ -25,6 +25,7 @@ const config = new ConfigTestServer()
 beforeAll(async () => {
     testDataSource = new DataSource({
         ...config.typeORMConfig,
+        dropSchema: true,
         entities: [
             CostumerEntity,
             ProductEntity,
@@ -43,7 +44,9 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-    await testDataSource.destroy()
+    if (testDataSource.isInitialized) {
+        await testDataSource.destroy()
+    }
 })
 
 describe('SaleEntity', () => {
