@@ -20,6 +20,7 @@ export default defineConfig({
         },
     },
     test: {
+        setupFiles: './__tests__/server/run.ts',
         globals: true,
         environment: 'node',
         coverage: {

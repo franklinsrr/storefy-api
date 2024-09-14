@@ -1,51 +1,8 @@
-import { describe, it, expect, beforeAll, afterAll, expectTypeOf } from 'vitest'
-import { DataSource } from 'typeorm'
-import {
-    CostumerEntity,
-    ProductEntity,
-    SellerEntity,
-    CategoryEntity,
-    ProductVariantEntity,
-    ImageEntity,
-    UserEntity,
-    CartItemEntity,
-    CartEntity,
-    SaleEntity,
-} from './imports'
-import { ConfigTestServer } from '../config/configTest'
-
-let testDataSource: DataSource
+import { describe, it, expect, expectTypeOf } from 'vitest'
+import { CartItemEntity } from './imports'
+import { testDataSource } from '../run'
 
 const quantity = 20
-
-const config = new ConfigTestServer()
-
-beforeAll(async () => {
-    testDataSource = new DataSource({
-        ...config.typeORMConfig,
-        dropSchema: true,
-        entities: [
-            CostumerEntity,
-            ProductEntity,
-            SellerEntity,
-            CategoryEntity,
-            ProductVariantEntity,
-            ImageEntity,
-            UserEntity,
-            CartItemEntity,
-            CartEntity,
-            SaleEntity,
-        ],
-    })
-
-    await testDataSource.initialize()
-})
-
-afterAll(async () => {
-    if (testDataSource.isInitialized) {
-        await testDataSource.destroy()
-    }
-})
 
 describe('CartItemEntity', () => {
     it('should create a CartItemEntity instance and assign properties correctly', async () => {

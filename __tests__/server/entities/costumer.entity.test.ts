@@ -1,52 +1,8 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest'
-import { DataSource } from 'typeorm'
-import {
-    CostumerEntity,
-    ProductEntity,
-    SellerEntity,
-    CategoryEntity,
-    ProductVariantEntity,
-    ImageEntity,
-    UserEntity,
-    CartItemEntity,
-    CartEntity,
-    SaleEntity,
-} from './imports'
-import { ConfigTestServer } from '../config/configTest'
-
-let testDataSource: DataSource
+import { describe, it, expect } from 'vitest'
+import { CostumerEntity } from './imports'
+import { testDataSource } from '../run'
 
 const address = '177A Bleecker Street, Greenwich Village, Nueva York'
-
-const config = new ConfigTestServer().typeORMConfig
-
-beforeAll(async () => {
-    testDataSource = new DataSource({
-        ...config,
-        synchronize: true,
-        dropSchema: true,
-        entities: [
-            ProductEntity,
-            SellerEntity,
-            CategoryEntity,
-            ProductVariantEntity,
-            ImageEntity,
-            UserEntity,
-            CartItemEntity,
-            CartEntity,
-            SaleEntity,
-            CostumerEntity,
-        ],
-    })
-
-    await testDataSource.initialize()
-})
-
-afterAll(async () => {
-    if (testDataSource.isInitialized) {
-        await testDataSource.destroy()
-    }
-})
 
 describe('CostumerEntity', () => {
     it('should create a CostumerEntity instance and assign properties correctly', async () => {

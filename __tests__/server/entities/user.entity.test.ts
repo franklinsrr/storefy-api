@@ -1,52 +1,7 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest'
-import { DataSource } from 'typeorm'
-
+import { describe, it, expect } from 'vitest'
 import { USER_TYPES } from '../../../src/shared/constants/user'
-import {
-    CostumerEntity,
-    ProductEntity,
-    SellerEntity,
-    CategoryEntity,
-    ProductVariantEntity,
-    ImageEntity,
-    UserEntity,
-    CartItemEntity,
-    CartEntity,
-    SaleEntity,
-} from './imports'
-import { ConfigTestServer } from '../config/configTest'
-
-let testDataSource: DataSource
-
-const config = new ConfigTestServer().typeORMConfig
-
-beforeAll(async () => {
-    testDataSource = new DataSource({
-        ...config,
-        synchronize: true,
-        dropSchema: true,
-        entities: [
-            CostumerEntity,
-            ProductEntity,
-            SellerEntity,
-            CategoryEntity,
-            ProductVariantEntity,
-            ImageEntity,
-            CartItemEntity,
-            CartEntity,
-            SaleEntity,
-            UserEntity,
-        ],
-    })
-
-    await testDataSource.initialize()
-})
-
-afterAll(async () => {
-    if (testDataSource.isInitialized) {
-        await testDataSource.destroy()
-    }
-})
+import { UserEntity } from './imports'
+import { testDataSource } from '../run'
 
 describe('UserEntity', () => {
     it('should create a UserEntity instance and assign properties correctly', async () => {
